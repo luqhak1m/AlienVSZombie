@@ -2,7 +2,7 @@
 
 ## Video Demo
 
-[Video Demo](https://youtu.be/rh_RPIfQxKs)
+[Video Demo](https://youtu.be/dvGX2Kzxn78)
 
 ## Minimum Requirements
 
