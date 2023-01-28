@@ -10,7 +10,7 @@ By only using limited commands, can the alien prove its worth and defeat all the
 
 [Gameplay Screenshot](ss.JPG)
 
-[Video Demo](https://youtube.com](https://youtu.be/BNSp_DFr5f0)
+[Video Demo](https://youtu.be/BNSp_DFr5f0)
 
 ## Compilation Instructions
 
