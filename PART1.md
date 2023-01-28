@@ -60,7 +60,7 @@ Please provide the YouTube link to your [Video Demo](https://youtube.com).
 1. Zombie 
   - After each move, zombies struggle with checking for aliens in range.
 2. Game object function
-  - System(“clear”)
+3. System(“clear”)
   - Cannot display help 
   - Cannot display zombie attribute
 
