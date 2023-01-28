@@ -14,13 +14,15 @@ Please provide the YouTube link to your [Video Demo](https://youtube.com).
 
 ## Compilation Instructions
 
-Provide instructions on how to compile your program, especially when it is non-trivial.
-
-For example:
+MacOS
 
 ```
-g++ main.cpp -o main.exe (MacOS)
-(Windows OS)
+g++ main.cpp -o main.exe
+```
+
+Windows
+```
+
 ```
 
 ## User Manual
