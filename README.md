@@ -53,8 +53,8 @@ iii) User manual for zombie
 2. Zombie’s behaviour
     - Each zombie will move after the alien's turn.
     - They can only move to one spot (up, down, left, right) during each turn granted that:
-        1. There is no other zombie in the spot
-        2. There is no alien in the spot
+        a. There is no other zombie in the spot
+        b. There is no alien in the spot
 
 
 ## Progress Log
