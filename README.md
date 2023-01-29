@@ -33,16 +33,21 @@ i) How to set up game board
 
 ii) User manual for alien
 
-1. The alien will start with health 100 and attack 0. 
-2. To move the alien to the right, type in the command ‘right’ or ‘Right’.
-3. To move the alien to the left, type in the command ‘left’ or ‘Left’.
-4. To move the alien upwards, type in the command ‘up’ or ‘Up’.
-5. To move the alien downwards, type in the command ‘down’ or ‘down’.
-6. To change the direction of the arrows, type in ‘arrow’ for the command. 
-7. Once the terminal shows ‘Enter row, column and direction =’, the user can input the row, column and direction of the  arrow they want to change. (Example = ‘6 5 up’). Press enter to save the new input. Press any key to continue entering commands for the movement of the alien.
-8. The alien will stop moving if it hits the border, hits a rock (r), or hits a zombie (‘1’, ’2’, ’3’, ’4’, ’5’, ’6’, ’7’, ’8’, ’9’).
-9. When the alien stops moving, the alien’s turn will end and the zombies will start their movements/turns.
-10. To quit the game, type in ‘quit’ or ‘Quit’.
+1. Alien's movement
+    1. The alien will start with health 100 and attack 0. 
+    2. To move the alien to the right, type in the command "right" or "Right".
+    3. To move the alien to the left, type in the command "left" or "Left".
+    4. To move the alien upwards, type in the command "up" or "Up".
+    5.  The alien will stop moving if it hits the border, hits a rock (r), or hits a zombie (‘1’, ’2’, ’3’, ’4’, ’5’, ’6’, ’7’, ’8’, ’9’).
+    6.  When the alien stops moving, the alien’s turn will end and the zombies will start their movements/turns.
+
+2. Arrow's direction
+    1. To move the alien downwards, type in the command "down" or "down".
+    2. To change the direction of an arrow, type in "arrow" for the command.
+    3. To change the direction of the arrows, type in "arrow" for the command. 
+    4. Once the terminal shows "Enter row, column and direction =", the user can input the row, column and direction of the  arrow they want to change.            (Example = "6 5 up"). Press enter to save the new input. Press any key to continue entering commands for the movement of the alien.
+
+3. To quit the game, type in ‘quit’ or ‘Quit’.
 
 iii) User manual for zombie
     
@@ -52,7 +57,7 @@ iii) User manual for zombie
 
 2. Zombie’s behaviour
     - Each zombie will move after the alien's turn.
-    - They can only move to one spot (up, down, left, right) during each turn granted that there is no other zombie in the spot and there   is no alien in the spot
+    - They can only move to one spot (up, down, left, right) during each turn granted that there is no other zombie in the spot and there is no alien in        the spot.
 
 
 ## Progress Log
