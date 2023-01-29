@@ -38,14 +38,14 @@ ii) User manual for alien
     2. To move the alien to the right, type in the command "right" or "Right".
     3. To move the alien to the left, type in the command "left" or "Left".
     4. To move the alien upwards, type in the command "up" or "Up".
-    5.  The alien will stop moving if it hits the border, hits a rock (r), or hits a zombie (‘1’, ’2’, ’3’, ’4’, ’5’, ’6’, ’7’, ’8’, ’9’).
-    6.  When the alien stops moving, the alien’s turn will end and the zombies will start their movements/turns.
+    5. To move the alien downwards, type in the command "down" or "down".
+    6. The alien will stop moving if it hits the border, hits a rock (r), or hits a zombie (‘1’, ’2’, ’3’, ’4’, ’5’, ’6’, ’7’, ’8’, ’9’).
+    7. When the alien stops moving, the alien’s turn will end and the zombies will start their movements/turns.
 
 2. Arrow's direction
-    1. To move the alien downwards, type in the command "down" or "down".
-    2. To change the direction of an arrow, type in "arrow" for the command.
-    3. To change the direction of the arrows, type in "arrow" for the command. 
-    4. Once the terminal shows "Enter row, column and direction =", the user can input the row, column and direction of the  arrow they want to change.            (Example = "6 5 up"). Press enter to save the new input. Press any key to continue entering commands for the movement of the alien.
+    1. To change the direction of an arrow, type in "arrow" for the command.
+    2. To change the direction of the arrows, type in "arrow" for the command. 
+    3. Once the terminal shows "Enter row, column and direction =", the user can input the row, column and direction of the  arrow they want to change.            (Example = "6 5 up"). Press enter to save the new input. Press any key to continue entering commands for the movement of the alien.
 
 3. To quit the game, type in ‘quit’ or ‘Quit’.
 
