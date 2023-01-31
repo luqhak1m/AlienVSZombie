@@ -1100,13 +1100,12 @@ void test()
         cout << "    Alien's turn has ended." << endl;
         gameBoard.display();
         for(int i=0; i<numOfZombies; i++){
-            zombies[i].moveZombie(i, zombies[i], gameBoard);
             zombies[i].print(zombies[i], gameBoard);
+            zombies[i].moveZombie(i, zombies[i], gameBoard);
             system("read -n 1 -s -p \"Press any key to continue...\"");
             gameBoard.display();
             }
         }
-        cout << "Zombie's turn has ended." << endl;
     }  
 }
 
