@@ -11,7 +11,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <cstdlib> // for system()
+#include <cstdlib> // for //system()
 #include <ctime>   // for time() in srand( time(NULL) );
 #include <iomanip> // for setw()
 #include <unistd.h>
@@ -185,7 +185,7 @@ void Alien::up(gameBoard &gameBoard, Alien &alien){
         //if (y_!= y || (game\Board.getObject(x_,y_+1)=='.') || (gameBoard.getObject(x_,y_+1)=='^')){
         if (y_!= y && gameBoard.isEmpty(x_,y_+1)){
             y_=y_+1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_,y_-1, '.');
             gameBoard.display();
@@ -193,7 +193,7 @@ void Alien::up(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_,y_+1)=='.'){
             y_=y_+1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_,y_-1, '.');
             gameBoard.display();
@@ -201,7 +201,7 @@ void Alien::up(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_,y_+1)=='^'){
             y_=y_+1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_,y_-1, '.');
             gameBoard.display();
@@ -209,7 +209,7 @@ void Alien::up(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_,y_+1)=='v'){
             y_=y_+1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_,y_-1, '.');
             gameBoard.display();
@@ -219,7 +219,7 @@ void Alien::up(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_,y_+1)=='>'){
             y_=y_+1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_,y_-1, '.');
             gameBoard.display();
@@ -228,7 +228,7 @@ void Alien::up(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_,y_+1)=='<'){
             y_=y_+1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_,y_-1, '.');
             gameBoard.display();
@@ -241,7 +241,7 @@ void Alien::up(gameBoard &gameBoard, Alien &alien){
             gameBoard.display();
             cout << "Alien has found a health pack!" << endl;
             cout << endl;
-            system("pause");
+            //system("pause");
         }
         else if (gameBoard.getObject(x_,y_+1)=='p'){
             y_=y_+1;
@@ -250,7 +250,7 @@ void Alien::up(gameBoard &gameBoard, Alien &alien){
             gameBoard.display();
             cout << "Alien has found a pod!" << endl;
             cout << endl;
-            system("pause");
+            //system("pause");
         }
         else{
             gameBoard.setObject(x_,y_,'A');
@@ -262,7 +262,7 @@ void Alien::up(gameBoard &gameBoard, Alien &alien){
             gameBoard.display();
             cout << "Alien has hit the border" << endl;
             cout << endl;
-            system("pause");
+            //system("pause");
             cout << endl;
             z_='S';
         }   
@@ -271,7 +271,7 @@ void Alien::up(gameBoard &gameBoard, Alien &alien){
             gameBoard.display();
             cout << "Alien attacks zombie" << endl;
             cout << endl;
-            system("pause");
+            //system("pause");
             cout << endl;
             z_='S';
         }
@@ -282,7 +282,7 @@ void Alien::up(gameBoard &gameBoard, Alien &alien){
             gameBoard.display();
             cout << "Alien has hit a rock." << endl;
             cout << endl;
-            system("pause");
+            //system("pause");
             cout << endl;
             z_='S';
         }
@@ -296,7 +296,7 @@ void Alien::down(gameBoard &gameBoard, Alien &alien){
     while ((y_-1 > 0) && (gameBoard.isEmpty(x_,y_-1) || (gameBoard.getObject(x_,y_-1)=='.')  || (gameBoard.getObject(x_,y_-1)=='^') || (gameBoard.getObject(x_,y_-1)=='v') || (gameBoard.getObject(x_,y_-1)=='<') || (gameBoard.getObject(x_,y_-1)=='>')|| (gameBoard.getObject(x_,y_-1)=='h') || (gameBoard.getObject(x_,y_-1)=='p'))){
         if (y_!= y && gameBoard.isEmpty(x_,y_-1)){
             y_=y_-1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_,y_+1, '.');
             gameBoard.display();
@@ -304,7 +304,7 @@ void Alien::down(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_,y_-1)=='.'){
             y_=y_-1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_,y_+1, '.');
             gameBoard.display();
@@ -312,7 +312,7 @@ void Alien::down(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_,y_-1)=='v'){
             y_=y_-1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_,y_+1, '.');
             gameBoard.display();
@@ -320,7 +320,7 @@ void Alien::down(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_,y_-1)=='^'){
             y_=y_-1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_,y_+1, '.');
             gameBoard.display();
@@ -330,7 +330,7 @@ void Alien::down(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_,y_-1)=='>'){
             y_=y_-1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_,y_+1, '.');
             gameBoard.display();
@@ -339,7 +339,7 @@ void Alien::down(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_,y-1)=='<'){
             y_=y_-1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_,y_+1, '.');
             gameBoard.display();
@@ -347,7 +347,7 @@ void Alien::down(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_,y_-1)=='h'){
             y_=y_-1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_,y_+1, '.');
             gameBoard.display();
@@ -356,7 +356,7 @@ void Alien::down(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_,y_-1)=='p'){
             y_=y_-1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_,y_+1, '.');
             gameBoard.display();
@@ -374,7 +374,7 @@ void Alien::down(gameBoard &gameBoard, Alien &alien){
         gameBoard.display();
         cout << "Alien has hit the border" << endl;
         cout << endl;
-        system("pause");
+        //system("pause");
         cout << endl;
         //z_='S';
     }
@@ -383,7 +383,7 @@ void Alien::down(gameBoard &gameBoard, Alien &alien){
         gameBoard.display();
         cout << "Alien attacks zombie" << endl;
         cout << endl;
-        system("pause");
+        //system("pause");
         cout << endl;
         z_='S';
     }
@@ -392,7 +392,7 @@ void Alien::down(gameBoard &gameBoard, Alien &alien){
             gameBoard.display();
             cout << "Alien has hit a rock." << endl;
             cout << endl;
-            system("pause");
+            //system("pause");
             cout << endl;
             z_='S';
     }
@@ -405,7 +405,7 @@ void Alien::left(gameBoard &gameBoard, Alien &alien){
     while ((x_-1 > 0) && (gameBoard.isEmpty(x_-1,y_) || (gameBoard.getObject(x_-1,y_)=='.') || (gameBoard.getObject(x_-1,y_)=='^') || (gameBoard.getObject(x_-1,y_)=='v') || (gameBoard.getObject(x_-1,y_)=='<') || (gameBoard.getObject(x_-1,y_)=='>') || (gameBoard.getObject(x_-1,y_)=='h') || (gameBoard.getObject(x_-1,y_)=='p'))){
         if (gameBoard.isEmpty(x_-1,y_)){
             x_=x_-1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_+1,y_, '.');
             gameBoard.display();
@@ -413,21 +413,21 @@ void Alien::left(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_-1,y_)=='.'){
             x_=x_-1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_+1,y_, '.');
             gameBoard.display();
         }
         else if (gameBoard.getObject(x_-1,y_)=='<'){
             x_=x_-1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_+1,y_, '.');
             gameBoard.display();
         }
         else if (gameBoard.getObject(x_-1,y_)=='^'){
             x_=x_-1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_+1,y_, '.');
             gameBoard.display();
@@ -436,7 +436,7 @@ void Alien::left(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_-1,y_)=='v'){
             x_=x_-1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_+1,y_, '.');
             gameBoard.display();
@@ -445,7 +445,7 @@ void Alien::left(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_-1,y_)=='>'){
             x_=x_-1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_+1,y_, '.');
             gameBoard.display();
@@ -454,23 +454,23 @@ void Alien::left(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_-1,y_)=='h'){
             x_=x_-1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_+1,y_, '.');
             gameBoard.display();
             cout << "Alien has found a health pack!" << endl;
             cout << endl;
-            //system("read -n 1 -s -p \"Press any key to continue...\"");
+            ////system("read -n 1 -s -p \"Press any key to continue...\"");
         }
         else if (gameBoard.getObject(x_-1,y_)=='p'){
             x_=x_-1;
-            system("pause");
+            //system("pause");
             gameBoard.setObject(x_,y_,'A');
             gameBoard.setObject(x_+1,y_, '.');
             gameBoard.display();
             cout << "Alien has found a pod!" << endl;
             cout << endl;
-            //system("read -n 1 -s -p \"Press any key to continue...\"");
+            ////system("read -n 1 -s -p \"Press any key to continue...\"");
         }
         else{
             gameBoard.setObject(x_,y_,'A');
@@ -483,7 +483,7 @@ void Alien::left(gameBoard &gameBoard, Alien &alien){
         gameBoard.display();
         cout << "Alien has hit the border" << endl;
         cout << endl;
-        system("pause");
+        //system("pause");
         cout << endl;
         z_='S';
     }
@@ -493,11 +493,11 @@ void Alien::left(gameBoard &gameBoard, Alien &alien){
         gameBoard.display();
         cout << "Alien attacks zombie" << endl;
         cout << endl;
-        system("pause");
+        //system("pause");
         gameBoard.setObject(x_-1,y_,'A');
         gameBoard.setObject(x_,y_,'.');
         gameBoard.display();
-        system("pause");
+        //system("pause");
         cout << endl;
         z_='S';
     }
@@ -506,7 +506,7 @@ void Alien::left(gameBoard &gameBoard, Alien &alien){
             gameBoard.display();
             cout << "Alien has hit a rock." << endl;
             cout << endl;
-            system("pause");
+            //system("pause");
             cout << endl;
             z_='S';
     }
@@ -519,7 +519,7 @@ void Alien::right(gameBoard &gameBoard, Alien &alien){
     while ((x_+1 <= x) && (gameBoard.isEmpty(x_+1,y_) || (gameBoard.getObject(x_+1,y_)=='.') || (gameBoard.getObject(x_+1,y_)=='^') || (gameBoard.getObject(x_+1,y_)=='v') || (gameBoard.getObject(x_+1,y_)=='<') || (gameBoard.getObject(x_+1,y_)=='>') || (gameBoard.getObject(x_+1,y_)=='h') || (gameBoard.getObject(x_+1,y_)=='p'))){
         if (gameBoard.isEmpty(x_+1,y_)){
             x_=x_+1;
-            system("pause");
+            //system("pause");
             cout << endl;
             gameBoard.setObject(x_, y_, 'A');
             gameBoard.setObject(x_-1, y_, '.');
@@ -528,7 +528,7 @@ void Alien::right(gameBoard &gameBoard, Alien &alien){
         } 
         else if (gameBoard.getObject(x_+1,y_)=='.'){
             x_=x_+1;
-            system("pause");
+            //system("pause");
             cout << endl;
             gameBoard.setObject(x_, y_, 'A');
             gameBoard.setObject(x_-1, y_, '.');
@@ -536,7 +536,7 @@ void Alien::right(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_+1,y_)=='>'){
             x_=x_+1;
-            system("pause");
+            //system("pause");
             cout << endl;
             gameBoard.setObject(x_, y_, 'A');
             gameBoard.setObject(x_-1, y_, '.');
@@ -544,7 +544,7 @@ void Alien::right(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_+1,y_)=='^'){
             x_=x_+1;
-            system("pause");
+            //system("pause");
             cout << endl;
             gameBoard.setObject(x_, y_, 'A');
             gameBoard.setObject(x_-1, y_, '.');
@@ -554,7 +554,7 @@ void Alien::right(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_+1,y_)=='v'){
             x_=x_+1;
-            system("pause");
+            //system("pause");
             cout << endl;
             gameBoard.setObject(x_, y_, 'A');
             gameBoard.setObject(x_-1, y_, '.');
@@ -564,7 +564,7 @@ void Alien::right(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_+1,y_)=='<'){
             x_=x_+1;
-            system("pause");
+            //system("pause");
             cout << endl;
             gameBoard.setObject(x_, y_, 'A');
             gameBoard.setObject(x_-1, y_, '.');
@@ -574,7 +574,7 @@ void Alien::right(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_+1,y_)=='h'){
             x_=x_+1;
-            system("pause");
+            //system("pause");
             cout << endl;
             gameBoard.setObject(x_, y_, 'A');
             gameBoard.setObject(x_-1, y_, '.');
@@ -584,7 +584,7 @@ void Alien::right(gameBoard &gameBoard, Alien &alien){
         }
         else if (gameBoard.getObject(x_+1,y_)=='p'){
             x_=x_+1;
-            system("pause");
+            //system("pause");
             cout << endl;
             gameBoard.setObject(x_, y_, 'A');
             gameBoard.setObject(x_-1, y_, '.');
@@ -603,7 +603,7 @@ void Alien::right(gameBoard &gameBoard, Alien &alien){
         gameBoard.display();
         cout << "Alien has hit the border" << endl;
         cout << endl;
-        system("pause");
+        //system("pause");
         cout << endl;
         z_='S';
     }
@@ -612,7 +612,7 @@ void Alien::right(gameBoard &gameBoard, Alien &alien){
         gameBoard.display();
         cout << "Alien attacks zombie" << endl;
         cout << endl;
-        system("pause");
+        //system("pause");
         cout << endl;
         z_='S';
     }
@@ -621,7 +621,7 @@ void Alien::right(gameBoard &gameBoard, Alien &alien){
             gameBoard.display();
             cout << "Alien has hit a rock." << endl;
             cout << endl;
-            system("pause");
+            //system("pause");
             cout << endl;
             z_='S';
     }
@@ -720,7 +720,7 @@ void gameBoard::init(int dimX, int dimY){
 }
 
 void gameBoard::display() const{
-    system("cls");
+    ////system("cls");
     cout << " --__--__--__--__--__--__--__--__--__--__--" << endl;
     cout << "            = Alien vs Zombies =           " << endl;
     cout << " --__--__--__--__--__--__--__--__--__--__--" << endl;
@@ -1037,7 +1037,7 @@ void test()
     }
     //gameBoard.display();
     while (alien.getMove()!='S'){
-        system("pause");
+        //system("pause");
         gameBoard.display();
         cout << "--> Alien's    Life: " << alien.getLife() << ", Attack:  " << alien.getAttack() << endl;
         for(int i=0; i<numOfZombies; i++){
@@ -1078,7 +1078,7 @@ void test()
                 arrow.down(gameBoard);
             }
             gameBoard.display();
-            system("pause");    
+            //system("pause");    
         }
         else if (command == "Quit" || command == "quit"){
             cout << "Goodbye" << endl;
@@ -1111,11 +1111,10 @@ void test()
         for(int i=0; i<numOfZombies; i++){
             zombies[i].moveZombie(i, zombies[i], gameBoard);
             zombies[i].print(zombies[i], gameBoard);
-            system("pause");
+            //system("pause");
             gameBoard.display();
             }
         }
-        cout << "Zombie's turn has ended." << endl;
     }  
 }
 
@@ -1124,3 +1123,5 @@ int main(){
     //srand(time(NULL));
     test();
 }
+
+
