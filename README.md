@@ -31,6 +31,13 @@ Please provide the user manual on how to use your program.
 
 i) How to set up game board
 
+1. There is already a preset number or rows, columns and zombies for the player to play.
+2. To edit the gameboard’s dimensions and the number of zombies, press ‘y’. If not, press ‘n’ to continue to play with the current default settings.
+3. When editing the gameboard’s dimensions, the player needs to input an odd number of rows and columns. 
+4. The number of zombies can be changed after entering the number of rows and columns. 
+
+    
+    
 ii) User manual for alien
 
 1. Alien's movement
