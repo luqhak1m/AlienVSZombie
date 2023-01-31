@@ -8,9 +8,9 @@ different challenges on the battlefield.
 
 By only using limited commands, can the alien prove its worth and defeat all the zombies?
 
-[!Gameplay Screenshot!](ss.JPG)
+[Gameplay Screenshot](ss.JPG)
 
-[!Full Gameplay!](https://youtu.be/h8DLofLM7No)
+[Full Gameplay](https://youtu.be/h8DLofLM7No)
 
 ## Compilation Instructions
 
@@ -22,14 +22,23 @@ g++ main.cpp -o main.exe
 
 Windows
 ```
-
+g++ mainWindows.cpp -o mainWindows.exe
 ```
 
 ## User Manual
 
 Please provide the user manual on how to use your program.
 
-i) How to set up game board
+i) **How to run the program**
+
+1. For Windows, if you are using main.cpp comment out the line ```system("clear")``` and ```system("read -n 1 -s -p \"Press any key to 
+continue...\"")``` for the program to run properly.
+3. If you're not using main.cpp file, alternatively you can use the file mainWindows.cpp instead.
+
+(Disclaimer: The ouput seen on the video is run on MacOs, hence Windows will have a slight difference on the output)
+ 
+
+ii) **How to set up game board**
 
 1. There is already a preset number or rows, columns and zombies for the player to play.
 2. To edit the gameboard’s dimensions and the number of zombies, press ‘y’. If not, press ‘n’ to continue to play with the current default settings.
@@ -38,7 +47,7 @@ i) How to set up game board
 
     
     
-ii) User manual for alien
+iii) **User manual for alien**
 
 1. Alien's movement
     1. The alien will start with health 100 and attack 0. 
@@ -56,7 +65,7 @@ ii) User manual for alien
 
 3. To quit the game, type in ‘quit’ or ‘Quit’.
 
-iii) User manual for zombie
+iv) **User manual for zombie**
     
 1. Generating Zombies
     - Players can generate at least one (1) zombie and at most nine (9) zombies. 
