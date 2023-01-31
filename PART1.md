@@ -72,8 +72,11 @@ Solution: So instead we just make a condition for each object.
 <ins>Unsolved problems.</ins>
 1. Zombie 
   - After each move, zombies struggle with checking for aliens in range.
-3. System(“clear”)
+2. System(“clear”)
   - Cannot display help.
   - Cannot display zombie attributes.
+3. Problems with WindowsOS
+  - Problems with system("CLS") and system("pause")
+  - The output will be printed at the same time (The alien's movements and zombie's movements)
 
 
