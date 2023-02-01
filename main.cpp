@@ -1028,7 +1028,7 @@ void test()
     }
     //gameBoard.display();
     while (alien.getMove()!='S'){
-        system("read -n 1 -s -p \"Press any key to continue...\"");
+        // system("read -n 1 -s -p \"Press any key to continue...\"");
         gameBoard.display();
         cout << "--> Alien's    Life: " << alien.getLife() << ", Attack:  " << alien.getAttack() << endl;
         for(int i=0; i<numOfZombies; i++){
