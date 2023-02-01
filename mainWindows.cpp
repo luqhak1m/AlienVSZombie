@@ -72,13 +72,13 @@ class Zombie: public gameBoard{
             void setZombieAttributes(int n, gameBoard &gameBoard);
 
             void print(Zombie &zombie, gameBoard &gameBoard){
-                cout << "------------------" << endl;
+                cout << "--------------------------------------" << endl;
                 cout << "Zombie  : " << zombie.getZHeading() << endl;
                 cout << "Position: " << "(" << zombie.getZX() << "," << zombie.getZY() << ")" << endl;
                 cout << "Health  : " << zombie.getZHealth() << endl;
                 cout << "Attack  : " << zombie.getZAttack() << endl;
                 cout << "Range   : " << zombie.getZRange() << endl;
-                cout << "------------------" << endl;
+                cout << "--------------------------------------" << endl;
             }
 
             int getZX(){
@@ -896,8 +896,6 @@ void Zombie::setZombieAttributes(int n, gameBoard &gameBoard){
 
 void Zombie::moveZombie(int n, Zombie &zombie, gameBoard &gameBoard){
 
-    cout << "Zombie " << n+1 << "'s Turn" << endl;
-    cout << "------------------" << endl;
     int randMove;
     bool valid = false;
     while (not valid){
@@ -1146,6 +1144,7 @@ void test()
         cout << "    Alien's turn has ended." << endl;
         gameBoard.display();
         for(int i=0; i<numOfZombies; i++){
+            cout << "Zombie " << i+1 << "'s Turn" << endl;
             zombies[i].print(zombies[i], gameBoard);
             zombies[i].moveZombie(i, zombies[i], gameBoard);
             cout << "Press any key to continue...";
