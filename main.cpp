@@ -851,8 +851,6 @@ void Zombie::setZombieAttributes(int n, gameBoard &gameBoard){
 
 void Zombie::moveZombie(int n, Zombie &zombie, gameBoard &gameBoard){
 
-    cout << "Zombie " << n+1 << "'s Turn" << endl;
-    cout << "------------------" << endl;
     int randMove;
     bool valid = false;
     while (not valid){
