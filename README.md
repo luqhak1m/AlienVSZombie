@@ -33,7 +33,7 @@ i) **How to run the program**
 continue...\"")``` for the program to run properly.
 3. If you're not using main.cpp file, alternatively you can use the file mainWindows.cpp instead.
 
-(Disclaimer: The ouput seen on the video is run on MacOs, hence Windows will have a slight difference on the output)
+(Disclaimer: The ouput seen on the video is run on MacOS for Aisyah and Luqman's part, hence Windows will have a slight difference on the output)
  
 
 ii) **How to set up game board**
