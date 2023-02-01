@@ -27,8 +27,6 @@ g++ mainWindows.cpp -o mainWindows.exe
 
 ## User Manual
 
-Please provide the user manual on how to use your program.
-
 i) **How to run the program**
 
 1. For Windows, if you are using main.cpp comment out the line ```system("clear")``` and ```system("read -n 1 -s -p \"Press any key to 
