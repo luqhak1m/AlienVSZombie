@@ -893,7 +893,7 @@ void Zombie::moveZombie(int n, Zombie &zombie, gameBoard &gameBoard){
                 gameBoard.setObject(x_, y_, ' ');
                 y_++;
                 gameBoard.setObject(x_, y_, heading_);
-                cout << "Moves Up" << endl;
+                // cout << "Moves Up" << endl;
             }
         }
         
@@ -916,7 +916,7 @@ void Zombie::moveZombie(int n, Zombie &zombie, gameBoard &gameBoard){
                 gameBoard.setObject(x_, y_, ' ');
                 y_--;
                 gameBoard.setObject(x_, y_, heading_);
-                cout << "Moves Down" << endl;
+                // cout << "Moves Down" << endl;
             }
         }
         
@@ -939,7 +939,7 @@ void Zombie::moveZombie(int n, Zombie &zombie, gameBoard &gameBoard){
                 gameBoard.setObject(x_, y_, ' ');
                 x_--;
                 gameBoard.setObject(x_, y_, heading_);
-                cout << "Moves Left" << endl;
+                // cout << "Moves Left" << endl;
             }
         }  
         
@@ -962,7 +962,7 @@ void Zombie::moveZombie(int n, Zombie &zombie, gameBoard &gameBoard){
                 gameBoard.setObject(x_, y_, ' ');
                 x_++;
                 gameBoard.setObject(x_, y_, heading_);
-                cout << "Moves Right" << endl;
+                // cout << "Moves Right" << endl;
             }
         } 
     }
