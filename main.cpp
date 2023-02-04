@@ -159,19 +159,31 @@ void Alien::addHealth(int life){
 }
 
 void Arrow::left(gameBoard &gameBoard, Alien &alien){
+    char oriArrow = gameBoard.getObject(x_,y_);
     gameBoard.setObject(x_,y_, '<');
+    cout << "Arrow succesfully changed from " << oriArrow << " to <." << endl;
+    system("read -n 1 -s -p \"Press any key to continue...\"");
 }
 
 void Arrow::right(gameBoard &gameBoard, Alien &alien){
+    char oriArrow = gameBoard.getObject(x_,y_);
     gameBoard.setObject(x_,y_, '>');
+    cout << "Arrow succesfully changed from " << oriArrow << " to >." << endl;
+    system("read -n 1 -s -p \"Press any key to continue...\"");
 }
 
 void Arrow::up(gameBoard &gameBoard, Alien &alien){
+    char oriArrow = gameBoard.getObject(x_,y_);
     gameBoard.setObject(x_,y_, '^');
+    cout << "Arrow succesfully changed from " << oriArrow << " to ^." << endl;
+    system("read -n 1 -s -p \"Press any key to continue...\"");
 }
 
 void Arrow::down(gameBoard &gameBoard, Alien &alien){
+    char oriArrow = gameBoard.getObject(x_,y_);
     gameBoard.setObject(x_,y_, 'v');
+    cout << "Arrow succesfully changed from " << oriArrow << " to v." << endl;
+    system("read -n 1 -s -p \"Press any key to continue...\"");
 }
 
 int Alien::getLife(){
