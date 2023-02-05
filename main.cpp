@@ -109,7 +109,15 @@ class Zombie: public gameBoard{
                 cout << "Range   : " << zombie.getZRange() << endl;
                 cout << "------------------" << endl;
             }
-
+            void print2(){
+                cout << "#===================#" << endl;
+                cout << "||"<< " Zombie :" << setw(8) << getZHeading()  << "||"<< endl;
+                cout << "||"<< " Pos.   :" << setw(2) << "(" << setw(2) << getZX() << "," << setw(2) << getZY() << ")" << "||"<< endl;
+                cout << "||"<< " Health :" << setw(8) << getZHealth()   << "||"<< endl;
+                cout << "||"<< " Attack :" << setw(8) << getZAttack()   << "||"<< endl;
+                cout << "||"<< " Range  :" << setw(8) << getZRange()    << "||"<< endl;
+                cout << "#===================#" << endl;
+            }
             int getZX(){
                 return x_;
             }
@@ -1176,6 +1184,7 @@ void test()
     int x,y;
     string direction;
     int numOfZombies = 2;
+    int z=0;
 
     char s;
     s = 'M'; //M = Alien's turn/move
@@ -1188,8 +1197,18 @@ void test()
     sleep(1);
 
     char ed;
-    cout << "Do you want to edit the Game Board (y/n)? = ";
-    cin >> ed;
+    bool validyesNo=false;
+    while(not validyesNo){
+        cout << "Do you want to edit the Game Board (y/n)? = ";
+        cin >> ed;
+        if(ed=='y'||ed=='n'){
+            validyesNo=true;
+            
+        }
+        else{
+            cout << "Please enter the correct input" << endl;
+        }
+    }
     if (ed == 'y')
     {
         gameBoard.checkRowCol(row, "Rows");
@@ -1213,9 +1232,6 @@ void test()
         col = 7;
     }
     else
-    {
-        cout << "Please enter the correct input" << endl;
-    }
     gameBoard.init(col,row);
     alien.land(gameBoard);
     Zombie zombies[numOfZombies];
@@ -1224,13 +1240,28 @@ void test()
     }
     //gameBoard.display();
     while (alien.getMove()!='S'){
-        system("read -n 1 -s -p \"Press any key to continue...\"");
+        if(z==0){
+            system("read -n 1 -s -p \"Press any key to continue...\"");
+        }
         gameBoard.display();
-        // cout << "--> Alien's    Life: " << alien.getLife() << ", Attack: " << alien.getAttack() << endl;
-        // for(int i=0; i<numOfZombies; i++){
-        //     cout << "    Zombie " << i+1 << "'s Life: " << zombies[i].getZHealth() << ", Attack: " << zombies[i].getZAttack() << endl;
-        // }
+        cout << "Alien's Life" << setw(5) << ": " << setw(3) << alien.getLife() << " Attack:" << setw(3) << alien.getAttack() << endl;
+        for(int i=0; i<numOfZombies; i++){
+            cout << "Zombie " << i+1 << " Status: ";
+            if(zombies[i].getZHealth()!=0){
+                cout << "Alive" <<endl;
+            }
+            else{
+                cout << "Dead" <<endl;
+            }
+            
+            if(z!=0){
+                if(i ==z-1){
+                    zombies[i].print2();     
+                }
+            }
+        }
         cout << endl;
+        z=0;
         cout << "Enter command: ";
         cin >> command;
         toupper(command[0]);
@@ -1272,13 +1303,23 @@ void test()
             cout << endl;
             break;
         }
-        else if (command == "Zombie || zombie"){
-            Zombie zombies[numOfZombies];
-                for(int i=0; i<numOfZombies; i++){
-                    zombies[i].print(zombies[i], gameBoard);
-                }           
+        else if (command == "1" 
+        || command == "2"
+        || command == "3"
+        || command == "4"
+        || command == "5"
+        || command == "6"
+        || command == "7"
+        || command == "8"
+        || command == "9"
+        || command == "0"
+        ){  
+            z = stoi(command);
+            if(command=="0"){
+                z=0;
+            }        
         }
-        else if (command == "Help" || "help"){
+        else if (command == "Help" || command == "help"){
             cout <<"________________________________" << endl;
             cout << endl;
             cout << "Valid Commands: " << endl;
@@ -1289,7 +1330,8 @@ void test()
             cout << "Left = Move left" << endl;
             cout << "Right = Move right" << endl;
             cout << "Quit = Quit" << endl;
-            cout << "Zombie = Show zombie attributes" << endl;
+            cout << "Zombie's number (1-9) = Show zombie attributes" << endl;
+            cout << "0 = Hide zombie attributes" << endl;
             cout <<"________________________________" << endl;
             cout << endl;
         }
