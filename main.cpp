@@ -1231,7 +1231,6 @@ void test()
         row = 5;
         col = 7;
     }
-    else
     gameBoard.init(col,row);
     alien.land(gameBoard);
     Zombie zombies[numOfZombies];
