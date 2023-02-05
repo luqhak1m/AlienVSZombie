@@ -35,7 +35,45 @@ public:
     void setObject(int x, int y, char ch);
     bool isEmpty(int x, int y);
     bool isInsideMap(int x, int y);
-
+    void checkRowCol(int &userInput, string a){
+        bool valid=false;
+        if(a=="Rows"||a=="Columns"){
+            while(not valid){
+                cout << "Please enter an ODD number of " << a << " = ";
+                cin >> userInput;
+                if(userInput%2==0){
+                    cout<<"Invalid Input!"<<endl;
+                }
+                else{
+                    valid=true;
+                }
+            }
+        }
+        else if(a=="Zombies"){
+            while(not valid){
+                cout << "Please enter a number of "<<a<< " = ";
+                cin >> userInput;
+                if(userInput<1 || userInput>9){
+                    cout<<"Invalid Input!"<<endl;
+                }
+                else{
+                    valid=true;
+                }
+            }   
+        }
+        else{
+            while(not valid){
+                cout << "Please enter a number of "<<a<< " = ";
+                cin >> userInput;
+                if(userInput<1 || userInput>9){
+                    cout<<"Invalid Input!"<<endl;
+                }
+                else{
+                    valid=true;
+                }
+            }   
+        } 
+    }
     //void showAttributes(Alien &alien, Zombie &zombie);
 };
 
@@ -1166,12 +1204,9 @@ void test()
     cin >> ed;
     if (ed == 'y')
     {
-        cout << "Please enter an ODD number of Rows = ";
-        cin >> row;
-        cout << "Please enter an ODD number of Columns = ";
-        cin >> col;
-        cout << "Please enter a number of Zombies = ";
-        cin >> numOfZombies;
+        gameBoard.checkRowCol(row, "Rows");
+        gameBoard.checkRowCol(col, "Columns");
+        gameBoard.checkRowCol(numOfZombies, "Zombies");
         system("clear");
         cout << "-----------Game Board------------" << endl;
         cout << "Number of Rows = " << row << endl;
