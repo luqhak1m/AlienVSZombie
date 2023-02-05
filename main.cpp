@@ -61,18 +61,6 @@ public:
                 }
             }   
         }
-        else{
-            while(not valid){
-                cout << "Please enter a number of "<<a<< " = ";
-                cin >> userInput;
-                if(userInput<1 || userInput>9){
-                    cout<<"Invalid Input!"<<endl;
-                }
-                else{
-                    valid=true;
-                }
-            }   
-        } 
     }
     //void showAttributes(Alien &alien, Zombie &zombie);
 };
