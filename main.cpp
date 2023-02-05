@@ -88,6 +88,9 @@ public:
     void resetTrail(gameBoard &gameBoard);
     void addAttack(int attack);
     void addHealth(int life);
+    int reduceHealth(int n){
+        return health_ = health_ - n;
+    }
 };
 
 class Zombie: public gameBoard{
@@ -100,13 +103,13 @@ class Zombie: public gameBoard{
         Zombie(){};
             void setZombieAttributes(int n, gameBoard &gameBoard);
 
-            void print(Zombie &zombie, gameBoard &gameBoard){
+            void print(){
                 cout << "------------------" << endl;
-                cout << "Zombie  : " << zombie.getZHeading() << endl;
-                cout << "Position: " << "(" << zombie.getZX() << "," << zombie.getZY() << ")" << endl;
-                cout << "Health  : " << zombie.getZHealth() << endl;
-                cout << "Attack  : " << zombie.getZAttack() << endl;
-                cout << "Range   : " << zombie.getZRange() << endl;
+                cout << "Zombie  : " << getZHeading() << endl;
+                cout << "Position: " << "(" << getZX() << "," << getZY() << ")" << endl;
+                cout << "Health  : " << getZHealth() << endl;
+                cout << "Attack  : " << getZAttack() << endl;
+                cout << "Range   : " << getZRange() << endl;
                 cout << "------------------" << endl;
             }
             void print2(){
@@ -128,21 +131,22 @@ class Zombie: public gameBoard{
             int getZAttack();
             int getZRange();
             char getZHeading();
-            bool checkZombie(int n, gameBoard &gameBoard){
-                const char letters[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
-                bool exists = false;
-                for (int i=0; i<n; i++){
-                    if (gameBoard.getObject(x_, y_) == letters[i]){
-                        exists = true;
-                    }
+            void reduceZHealth(int n){
+                health_=health_-n;
+                if(health_<=0){
+                    health_=0;
                 }
-                return exists;
             }
-            void reduceHealth(int n){
-                health_ = health_ - n;
-            }
-            void checkRange(Zombie &zombie, gameBoard &gameBoard);
+            bool returnRange(Zombie &zombie, gameBoard &gameBoard, Alien &alien);
+            void checkRange(Zombie &zombie, gameBoard &gameBoard, Alien &alien);
+            void checkReturnRange(bool &inRange, Zombie &zombie, gameBoard &gameBoard, Alien &alien); // ONLY USED ON returnRange()
+            void checkZombieRange(int &oneDirection, int &rangeFromZombie, Zombie &zombie, gameBoard &gameBoard, Alien &alien); // ONLY USED ON checkRange()
             void moveZombie(int n, Zombie &zombie, gameBoard &gameBoard); 
+            void displayZombieTemplate(int n, Zombie &zombie, gameBoard &gameBoard, Alien &alien){
+                gameBoard.display();
+                cout << "Zombie " << n+1 << " 's turn" << endl;
+                zombie.print();
+            }
         
 };
 
@@ -1055,8 +1059,6 @@ void Zombie::setZombieAttributes(int n, gameBoard &gameBoard){
 
 void Zombie::moveZombie(int n, Zombie &zombie, gameBoard &gameBoard){
 
-    cout << "Zombie " << n+1 << "'s Turn" << endl;
-    cout << "------------------" << endl;
     int randMove;
     bool valid = false;
     while (not valid){
@@ -1097,7 +1099,7 @@ void Zombie::moveZombie(int n, Zombie &zombie, gameBoard &gameBoard){
                 gameBoard.setObject(x_, y_, ' ');
                 y_++;
                 gameBoard.setObject(x_, y_, heading_);
-                // cout << "Moves Up" << endl;
+                cout << "Moves Up" << endl;
             }
         }
         
@@ -1113,14 +1115,14 @@ void Zombie::moveZombie(int n, Zombie &zombie, gameBoard &gameBoard){
             || gameBoard.getObject(x_,y_-1)=='8' 
             || gameBoard.getObject(x_,y_-1)=='9'
             || gameBoard.getObject(x_,y_-1)=='A'){
-                // cout << "Zombie CANNOT move DOWN" << endl;
+                cout << "Zombie CANNOT move DOWN" << endl;
             } 
             else{
                 valid=true;
                 gameBoard.setObject(x_, y_, ' ');
                 y_--;
                 gameBoard.setObject(x_, y_, heading_);
-                // cout << "Moves Down" << endl;
+                cout << "Moves Down" << endl;
             }
         }
         
@@ -1143,7 +1145,7 @@ void Zombie::moveZombie(int n, Zombie &zombie, gameBoard &gameBoard){
                 gameBoard.setObject(x_, y_, ' ');
                 x_--;
                 gameBoard.setObject(x_, y_, heading_);
-                // cout << "Moves Left" << endl;
+                cout << "Moves Left" << endl;
             }
         }  
         
@@ -1166,11 +1168,223 @@ void Zombie::moveZombie(int n, Zombie &zombie, gameBoard &gameBoard){
                 gameBoard.setObject(x_, y_, ' ');
                 x_++;
                 gameBoard.setObject(x_, y_, heading_);
-                // cout << "Moves Right" << endl;
+                cout << "Moves Right" << endl;
             }
         } 
     }
+    cout << "------------------" << endl;
     // cout << "randMove after: " << randMove << endl;  
+}
+
+void Zombie::checkReturnRange(bool &inRange, Zombie &zombie, gameBoard &gameBoard, Alien &alien){
+
+
+    if(zombie.getZY()+zombie.getZRange()<=zombie.getDimY()){
+        // cout << "checking for top 1..." << endl;
+        for(int i=1;i<=zombie.getZRange();i++){
+            if((zombie.getZX()==alien.getX())&&(zombie.getZY()+i==alien.getY())){
+                // cout << "alien is on the top, " << i << "tiles away"  << "(" << x_ << "," << y_+i << ")" << endl;
+                inRange=true;
+            }
+        }
+    }
+    else if(zombie.getZY()+zombie.getZRange()>zombie.getDimY()){
+        // cout << "checking for top 2..." << endl;
+        int n=zombie.getDimY()-zombie.getZY();
+        for(int i=1;i<=n;i++){
+            if((zombie.getZX()==alien.getX())&&(zombie.getZY()+i==alien.getY())){
+                // cout << "alien is on the top, " << i << "tiles away"  << "(" << x_ << "," << y_+i << ")" << endl;
+                inRange=true;
+            }
+        }
+    }
+
+    if(zombie.getZY()-zombie.getZRange()>=1){
+        // cout << "checking for down 1..." << endl;
+        for(int i=1;i<=zombie.getZRange();i++){
+            if((zombie.getZX()==alien.getX())&&(zombie.getZY()-i==alien.getY())){
+                // cout << "alien is on the bottom, " << i << "tiles away"  << "(" << x_ << "," << y_-i << ")" << endl;
+                inRange=true;
+            }
+        }
+    }
+    else if(zombie.getZX()-zombie.getZRange()<1){
+        // cout << "checking for down 2..." << endl;
+        int n=zombie.getZY()-1;
+        for(int i=1;i<=n;i++){
+            if((zombie.getZX()==alien.getX())&&(zombie.getZY()-i==alien.getY())){
+                // cout << "alien is on the bottom, " << i << "tiles away" << "(" << x_ << "," << y_-i << ")" << endl;
+                inRange=true;
+            }
+        }
+    } 
+
+    if(zombie.getZX()-zombie.getZRange()>=1){
+        // cout << "checking for left 1..." << endl;
+        for(int i=1;i<=zombie.getZRange();i++){
+            if((zombie.getZX()-i==alien.getX())&&(zombie.getZY()==alien.getY())){
+                // cout << "alien is on the left, " << i << "tiles away" << "(" << x_-i << "," << y_ << ")" << endl;
+                inRange=true;
+            }
+        }
+    } 
+    else if(zombie.getZX()-zombie.getZRange()<1){
+        // cout << "checking for left 2..." << endl;
+        int n=zombie.getZX()-1;
+        for(int i=1;i<=n;i++){
+            if((zombie.getZX()-i==alien.getX())&&(zombie.getZY()==alien.getY())){
+                // cout << "alien is on the left, " << i << " tiles away at " << "(" << x_-i << "," << y_ << ")" << endl;
+                inRange=true;
+            }
+        }
+    }
+
+    if(zombie.getZX()+zombie.getZRange()<=zombie.getDimX()){
+        // cout << "checking for right 1..." << endl;
+        for(int i=1;i<=zombie.getZRange();i++){
+            if((zombie.getZX()+i==alien.getX())&&(zombie.getZY()==alien.getY())){
+                // cout << "alien is on the right, " << i << "tiles away" << "(" << x_+i << "," << y_ << ")" << endl;
+                inRange=true;
+
+            }
+        }
+    }
+    else if(zombie.getZX()+zombie.getZRange()>zombie.getDimX()){
+        // cout << "checking for right 2..." << endl;
+        int n=zombie.getDimX()-zombie.getZX();
+        for(int i=1;i<=n;i++){
+            if((zombie.getZX()+i==alien.getX())&&(zombie.getZY()==alien.getY())){
+                // cout << "alien is on the right, " << i << "tiles away" << "(" << x_+i << "," << y_ << ")" << endl;
+                inRange=true;
+            }
+        }
+    }
+}
+
+bool Zombie::returnRange(Zombie &zombie, gameBoard &gameBoard, Alien &alien){
+
+    // predict if position+range is out of bound
+    
+    // cout<< "Range: "<<zombie.getZRange()<<endl;
+    // cout<< "Position: " << "(" << zombie.getZX() << "," <<zombie.getZY() << ")" <<endl;
+    bool inRange=false;
+
+    checkReturnRange(inRange, zombie, gameBoard, alien); 
+    return inRange;
+}
+
+void Zombie::checkZombieRange(int &oneDirection, int &rangeFromZombie, Zombie &zombie, gameBoard &gameBoard, Alien &alien){
+    if(zombie.getZY()+zombie.getZRange()<=zombie.getDimY()){
+        // cout << "checking for top 1..." << endl;
+        for(int i=1;i<=zombie.getZRange();i++){
+            if((zombie.getZX()==alien.getX())&&(zombie.getZY()+i==alien.getY())){
+                // cout << "alien is on the top, " << i << "tiles away"  << "(" << x_ << "," << y_+i << ")" << endl;
+                rangeFromZombie=i;
+                oneDirection = 1;
+            }
+        }
+    }
+    else if(zombie.getZY()+zombie.getZRange()>zombie.getDimY()){
+        // cout << "checking for top 2..." << endl;
+        int n=zombie.getDimY()-zombie.getZY();
+        for(int i=1;i<=n;i++){
+            if((zombie.getZX()==alien.getX())&&(zombie.getZY()+i==alien.getY())){
+                // cout << "alien is on the top, " << i << "tiles away"  << "(" << x_ << "," << y_+i << ")" << endl;
+                rangeFromZombie=i;
+                oneDirection = 1;
+            }
+        }
+    }
+
+    if(zombie.getZY()-zombie.getZRange()>=1){
+        // cout << "checking for down 1..." << endl;
+        for(int i=1;i<=zombie.getZRange();i++){
+            if((zombie.getZX()==alien.getX())&&(zombie.getZY()-i==alien.getY())){
+                // cout << "alien is on the bottom, " << i << "tiles away"  << "(" << x_ << "," << y_-i << ")" << endl;
+                rangeFromZombie=i;
+                oneDirection = 2;
+            }
+        }
+    }
+    else if(zombie.getZY()-zombie.getZRange()<1){
+        // cout << "checking for down 2..." << endl;
+        int n=zombie.getZY()-1;
+        for(int i=1;i<=n;i++){
+            if((zombie.getZX()==alien.getX())&&(zombie.getZY()-i==alien.getY())){
+                // cout << "alien is on the bottom, " << i << "tiles away" << "(" << x_ << "," << y_-i << ")" << endl;
+                rangeFromZombie=i;
+                oneDirection = 2;
+            }
+        }
+    } 
+
+    if(zombie.getZX()-zombie.getZRange()>=1){
+        // cout << "checking for left 1..." << endl;
+        for(int i=1;i<=zombie.getZRange();i++){
+            if((zombie.getZX()-i==alien.getX())&&(zombie.getZY()==alien.getY())){
+                // cout << "alien is on the left, " << i << "tiles away" << "(" << x_-i << "," << y_ << ")" << endl;
+                rangeFromZombie=i;
+                oneDirection = 3;
+            }
+        }
+    } 
+    else if(zombie.getZX()-zombie.getZRange()<1){
+        // cout << "checking for left 2..." << endl;
+        int n=zombie.getZX()-1;
+        for(int i=1;i<=n;i++){
+            if((zombie.getZX()-i==alien.getX())&&(zombie.getZY()==alien.getY())){
+                // cout << "alien is on the left, " << i << " tiles away at " << "(" << x_-i << "," << y_ << ")" << endl;
+                rangeFromZombie=i;
+                oneDirection = 3;
+            }
+        }
+    }
+
+    if(zombie.getZX()+zombie.getZRange()<=zombie.getDimX()){
+        // cout << "checking for right 1..." << endl;
+        for(int i=1;i<=zombie.getZRange();i++){
+            if((zombie.getZX()+i==alien.getX())&&(zombie.getZY()==alien.getY())){
+                // cout << "alien is on the right, " << i << "tiles away" << "(" << x_+i << "," << y_ << ")" << endl;
+                rangeFromZombie=i;
+                oneDirection = 4;
+            }
+        }
+    }
+    else if(zombie.getZX()+zombie.getZRange()>zombie.getDimX()){
+        // cout << "checking for right 2..." << endl;
+        int n=zombie.getDimX()-zombie.getZX();
+        for(int i=1;i<=n;i++){
+            if((zombie.getZX()+i==alien.getX())&&(zombie.getZY()==alien.getY())){
+                // cout << "alien is on the right, " << i << "tiles away" << "(" << x_+i << "," << y_ << ")" << endl;
+                rangeFromZombie=i;
+                oneDirection = 4;
+            }
+        }
+    }
+}
+
+void Zombie::checkRange(Zombie &zombie, gameBoard &gameBoard, Alien &alien){
+    int oneDirection;
+    int rangeFromZombie;
+
+    checkZombieRange(oneDirection, rangeFromZombie, zombie, gameBoard, alien);
+
+    cout << "Alien is in range, " << rangeFromZombie << " tiles away from the ";
+    
+    if(oneDirection==1){
+        cout << "top." << endl;
+    }
+    if(oneDirection==2){
+        cout << "bottom." << endl;
+    }
+    if(oneDirection==3){
+        cout << "left." << endl;
+    }
+    if(oneDirection==4){
+        cout << "right." << endl;
+    }
+
+    cout << "Zombie attacks Alien! Zombie deals "<< zombie.getZAttack() << " damage to Alien."<< endl;
 }
 
 void test()
@@ -1347,11 +1561,37 @@ void test()
             alien.resetTrail(gameBoard);
             gameBoard.display();
             for(int i=0; i<numOfZombies; i++){
-                zombies[i].print(zombies[i], gameBoard);
-                zombies[i].moveZombie(i, zombies[i], gameBoard);
-                system("read -n 1 -s -p \"Press any key to continue...\"");
-                gameBoard.display();
+                // zombies[i].reduceZHealth(300); for testing purpose only
+                if(zombies[i].getZHealth()==0){
+                    //gameBoard.setObject(zombies[i].getZX(), zombies[i].getZX(), ' ');
+                    zombies[i].displayZombieTemplate(i, zombies[i], gameBoard, alien);
+                    cout<< "Zombie " << zombies[i].getZHeading() << " is DEAD." << endl;
+                    system("read -n 1 -s -p \"Press any key to continue...\"\n");
                 }
+                else{
+                    zombies[i].displayZombieTemplate(i, zombies[i], gameBoard, alien);
+                    cout << "Zombie ";
+                    zombies[i].moveZombie(i, zombies[i], gameBoard);
+                    system("read -n 1 -s -p \"Press any key to continue...\"\n");
+                    zombies[i].displayZombieTemplate(i, zombies[i], gameBoard, alien);
+                    if(zombies[i].returnRange(zombies[i], gameBoard, alien)){
+                        zombies[i].checkRange(zombies[i], gameBoard, alien);
+                        if(alien.reduceHealth(zombies[i].getZAttack())<=0){
+                            cout << "Alien is DEAD. you lose. good day sir" << endl;
+                        }
+                        else{
+                            cout << "Alien's life is down to " << alien.getLife() << "." << endl;
+                        }
+                    }
+                    else{
+                        cout<<"Alien is NOT in range. Alien is safe."<<endl;
+                    }
+                    system("read -n 1 -s -p \"Press any key to continue...\"\n");
+                }
+            }
+            gameBoard.display();
+
+            cout << "\nThis turn has ended" << endl;
             alien.setMove();
         }
     }  
