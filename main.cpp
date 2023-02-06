@@ -1115,7 +1115,7 @@ void Zombie::moveZombie(int n, Zombie &zombie, gameBoard &gameBoard){
             || gameBoard.getObject(x_,y_-1)=='8' 
             || gameBoard.getObject(x_,y_-1)=='9'
             || gameBoard.getObject(x_,y_-1)=='A'){
-                cout << "Zombie CANNOT move DOWN" << endl;
+                // cout << "Zombie CANNOT move DOWN" << endl;
             } 
             else{
                 valid=true;
