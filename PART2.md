@@ -21,13 +21,14 @@ List all the features completed.
 9. Randomising zombie’s attributes (Health, Attack, Range, Positions and Heading)
 10. Zombie’s Movement.
 11. Reset Alien's trail.
-12. Reset Rock.
-13. Increase health Alien when interacting with health pack.
+12. Revealing new game objects under the Rock.
+13. Increase health Alien by 20 when interacting with health pack.
 14. Increase attack score of Alien when interacting with arrows.
 15. Resetting attack score of Alien when it's turn ends.
 16. Alien attacks Zombie and health of Zombie decreases according to attack score of zombie.
 17. Zombie attacks alien based on its attack score when the alien is in it's range.
 18. Save and Load game.
+19. Creating the main commands of the game.
 
 ## Additional Features
 
@@ -55,6 +56,7 @@ List all the features completed.
 7. Coding function for Resetting attack score of Alien when it's turn ends.
 8. Coding function for Alien attacks Zombie and health of Zombie decreases according to attack score of zombie.
 9. Coding save and load function.
+10. Coding the main commands of the game.
 
 ### Luqman Hakim
 
@@ -69,7 +71,9 @@ List all the features completed.
 ## Problems Encountered & Solutions
 
 Problem: Had trouble finding nearest Zombies (diagonally).
+
 Solution: Pythagoras theorem
 
 Problem : Had trouble loading the game with zombies. The gameboard.txt file didnt save the correct positions of the zombies when loading.
+
 Solution: The heading which was saved in the zombie.txt was data type integer, however the heading in the code was data type char. Thus, we solved this problem by converting int to char by + 48 to the int. 
