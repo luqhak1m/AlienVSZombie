@@ -64,6 +64,7 @@ For example:
 6. Coding function for Increase attack score of Alien when interacting with arrows.
 7. Coding function for Resetting attack score of Alien when it's turn ends.
 8. Coding function for Alien attacks Zombie and health of Zombie decreases according to attack score of zombie.
+9. Coding save and load function.
 
 ### Luqman Hakim
 
