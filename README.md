@@ -54,7 +54,7 @@ iii) **User manual for alien**
     4. To move the alien upwards, type in the command "up" or "Up".
     5. To move the alien downwards, type in the command "down" or "down".
     6. The alien will stop moving if it hits the border, hits a rock (r), or hits a zombie (‘1’, ’2’, ’3’, ’4’, ’5’, ’6’, ’7’, ’8’, ’9’).
-    7. When the alien stops moving, the alien’s turn will end and the zombies will start their movements/turns.
+    7. When the alien stops moving, the alien’s turn will end, it's attack will reset to 0 and the zombies will start their movements/turns.
 
 2. Arrow's direction
     1. To change the direction of an arrow, type in "arrow" for the command.
