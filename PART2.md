@@ -70,3 +70,6 @@ List all the features completed.
 
 Problem: Had trouble finding nearest Zombies (diagonally).
 Solution: Pythagoras theorem
+
+Problem : Had trouble loading the game with zombies. The gameboard.txt file didnt save the correct positions of the zombies when loading.
+Solution: The heading which was saved in the zombie.txt was data type integer, however the heading in the code was data type char. Thus, we solved this problem by converting int to char by + 48 to the int. 
