@@ -54,7 +54,7 @@ List all the features completed.
 5. Coding function for Increase health Alien when interacting with health pack.
 6. Coding function for Increase attack score of Alien when interacting with arrows.
 7. Coding function for Resetting attack score of Alien when it's turn ends.
-8. Coding function for Alien attacks Zombie and health of Zombie decreases according to attack score of zombie.
+8. Coding function for Alien attacks Zombie and health of Zombie decreases according to attack score of Alien.
 9. Coding save and load function.
 10. Coding the main commands of the game.
 
