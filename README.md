@@ -12,7 +12,7 @@ By only using limited commands, can the alien prove its worth and defeat all the
 
 [Full Gameplay](https://youtu.be/86s3pnQ3_OQ)
 
-## Compilation Instructions (IMPORTANT)
+## Compilation Instructions
 
 MacOS
 
@@ -25,13 +25,13 @@ Windows
 g++ mainWindows.cpp -o mainWindows.exe
 ```
 
-## User Manual
+## User Manual (IMPORTANT)
 
 i) **How to run the program**
 
 1. For Windows, if you are using main.cpp comment out the line ```system("clear")``` and ```system("read -n 1 -s -p \"Press any key to 
 continue...\"")``` for the program to run properly.
-3. If you're not using main.cpp file, alternatively you can use the file mainWindows.cpp instead.
+2. If you're not using main.cpp file, alternatively you can use the file mainWindows.cpp instead.
 
 (Disclaimer: The ouput seen on the video is run on MacOS for Aisyah and Luqman's part, hence Windows will have a slight difference on the output)
  
