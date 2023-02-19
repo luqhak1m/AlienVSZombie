@@ -112,7 +112,6 @@ class Zombie: public gameBoard{
 
             void print(){
                 cout << "------------------" << endl;
-                cout << "Zombie  : " << getZHeading() << endl;
                 cout << "Position: " << "(" << getZX() << "," << getZY() << ")" << endl;
                 cout << "Health  : " << getZHealth() << endl;
                 cout << "Attack  : " << getZAttack() << endl;
@@ -121,7 +120,6 @@ class Zombie: public gameBoard{
             }
             void print2(){
                 cout << "#===================#" << endl;
-                //cout << "||"<< " Zombie :" << setw(8) << getZHeading()  << "||"<< endl;
                 cout << "||"<< " Pos.   :" << setw(2) << "(" << setw(2) << getZX() << "," << setw(2) << getZY() << ")" << "||"<< endl;
                 cout << "||"<< " Health :" << setw(8) << getZHealth()   << "||"<< endl;
                 cout << "||"<< " Attack :" << setw(8) << getZAttack()   << "||"<< endl;
@@ -1583,11 +1581,11 @@ void test()
     Alien alien;
     Arrow arrow;
     
-    int col = 7, row =5;
+    int col = 13, row =9;
     string command;
     int x,y;
     string direction;
-    int numOfZombies = 2;
+    int numOfZombies = 9;
     int z = 0;
     int z_no;
     int oriHealth, health;
@@ -1607,30 +1605,33 @@ void test()
     cout << "----------------------------------" << endl;
     sleep(1);
 
+    char ed;
+    char choice;
+    //bool validyesNo = false;
+    // while(not validyesNo){
+    //     cout << "Do you want to resume your game (y/n)? = ";
+    //     cin >> choice;
 
-    char ed, choice;
-    bool validyesNo=false;
-    while(not validyesNo){
-        cout << "Do you want to resume your game (y/n)? = ";
-        cin >> choice;
-
-        if(choice=='y' || choice =='n'){
-            validyesNo=true;
-        }
-        else{
-            cout << "Please enter the correct input" << endl;
-        }
-    }
+    //     if(choice=='y' || choice =='n'){
+    //         validyesNo=true;
+    //     }
+    //     else{
+    //         cout << "Please enter the correct input" << endl;
+    //     }
+    // }
+    cout << "Do you want to resume your game (y/n)? = ";
+    cin >> choice;
     if (choice == 'y'){
         fin >> row >> col >> numOfZombies;
     }
     else if (choice =='n'){
-        numOfZombies = 11;
+        //Zombie zombies[numOfZombies];
+        numOfZombies = numOfZombies;
         cout << "Do you want to edit the Game Board (y/n)? = ";
         cin >> ed;
-        // gameBoard.checkRowCol(row, "Rows");
-        // gameBoard.checkRowCol(col, "Columns");
-        // gameBoard.checkRowCol(numOfZombies, "Zombies");
+        //gameBoard.checkRowCol(row, "Rows");
+        //gameBoard.checkRowCol(col, "Columns");
+        //gameBoard.checkRowCol(numOfZombies, "Zombies");
     }
 
     Zombie zombies[numOfZombies];
@@ -1660,22 +1661,23 @@ void test()
             cout << endl;
             cout << "Let's Play!" << endl;
             cout << endl;
-            row = 5;
-            col = 7;
+            row = 9;
+            col = 13;
         }
         gameBoard.init(col,row);
         alien.land(gameBoard);
+        fout.close();
 
         //Zombie zombies[numOfZombies];
         for(int i=0; i<numOfZombies; i++){
             zombies[i].setZombieAttributes(i, gameBoard);
         }
-
-        fout.close();
     }
     else{
         fin >> row >> col >> numOfZombies;
         gameBoard.init2(col,row);
+
+        fin.close();
 
         ifstream read;
         read.open("zombies.txt");
@@ -1684,7 +1686,7 @@ void test()
         int w = 0;
 
         while (read.good()){
-            for (c=0; c<6; c++){
+            for (c=0; c<6; ++c){
                 read >> zomb[w][c];
             }
             w++;
@@ -1692,27 +1694,23 @@ void test()
         for(int i=0; i<numOfZombies; i++){
             zombies[i].setZombieAttributes2(i, gameBoard, zomb[i]);
         }
-
         alien.resumeMove(gameBoard);
 
-        read.close();
+        fin.close();
     }
-
-    fin.close();
     
     while (alien.getMove()!='S'){
         if(z==0){
-            cout << "Press any key to continue...";
             _getwch();
         }
         gameBoard.display();
         cout << "Alien's Life" << setw(5) << ": " << setw(3) << alien.getLife() << " Attack:" << setw(3) << alien.getAttack() << endl;
         for(int i=0; i<numOfZombies; i++){
             cout << "Zombie " << i+1 << " Status: ";
-            if(zombies[i].getZHealth() >0){
+            if(zombies[i].getZHealth()>=0){
                 cout << "Alive" <<endl;
             }
-            else if( zombies[i].getZHealth() <=0){
+            else{
                 cout << "Dead" <<endl;
             }
             
@@ -1758,7 +1756,6 @@ void test()
                 arrow.down(gameBoard, alien);
             }
             gameBoard.display();
-            // _getwch();    
         }
         else if (command == "Quit" || command == "quit"){
             cout << "Goodbye!" << endl;
@@ -1802,20 +1799,24 @@ void test()
             ofstream fout2;
             fout2.open("zombies.txt");
 
-            for(int i=0; i<numOfZombies; ++i){
-                fout2 << zombies[i].getZHeading()
-                     << ' ' << zombies[i].getZX() << ' ' << zombies[i].getZY()
-                     << ' ' << zombies[i].getZHealth()
-                     << ' ' << zombies[i].getZAttack()
-                     << ' ' << zombies[i].getZRange()
+            for(int k=0; k<numOfZombies; ++k){
+                fout2 << zombies[k].getZHeading()
+                     << ' ' << zombies[k].getZX() 
+                     << ' ' << zombies[k].getZY()
+                     << ' ' << zombies[k].getZHealth()
+                     << ' ' << zombies[k].getZAttack()
+                     << ' ' << zombies[k].getZRange()
                      << endl;
-            }
-            fout2.close();
 
+            }
+
+            fout2.close();
             ofstream write;
             write.open("alien.txt");
             write << alien.getX() << ' ' << alien.getY() << ' ' << alien.getLife() << ' ' << alien.getAttack() <<endl;
             write.close();
+            cout << "Your game has been saved!" << endl;
+            //break;
         }
         else{
             cout << "Invalid command. Enter in valid command." << endl;
@@ -1824,7 +1825,7 @@ void test()
 
         if (alien.getMove()=='S'){
             oriHealth = zombies[z_no-1].getZHealth();
-            health = zombies[z_no-1].getZHealth() - alien.getAttack(); //cout  << endl << zombies[z_no-1].getZHealth() << endl;
+            health = zombies[z_no-1].getZHealth() - alien.getAttack(); 
             zombies[z_no-1].setZHealth(health);
             if (health == oriHealth){
                 cout << "Zombie " << z_no << " has no reduced health." << endl;
@@ -1838,17 +1839,18 @@ void test()
                 cout << "Zombie " << z_no << " is still alive." << endl;
                 cout << endl;
             }
-            int attack = 0;
-            alien.resetAttack(attack);
+            // int attack = 0;
+            // alien.resetAttack(attack);
             cout << "Alien's turn has ended." << endl;
             cout << endl;
-            cout << "Press any key to continue...";
             _getwch();
+            int attack = 0;
+            alien.resetAttack(attack);
             gameBoard.display();
             alien.resetTrail(gameBoard);
             gameBoard.display();
             for(int i=0; i<numOfZombies; i++){
-                if(zombies[i].getZHealth() <=0){
+                if(zombies[i].getZHealth()<=0){
                     zombies[i].displayZombieTemplate(i, zombies[i], gameBoard, alien);
                     cout<< "Zombie " << zombies[i].getZHeading() << " is DEAD." << endl;
                     cout << "Press any key to continue...";
@@ -1879,15 +1881,12 @@ void test()
                 }
             }
             gameBoard.display();
-
             cout << "\nThis round has ended" << endl;
             alien.setMove();
         }
-      
-    else if(alien.getMove()=='K'){
+        else if(alien.getMove()=='K'){
             cout << "Alien's turn has ended." << endl;
             cout << endl;
-            cout << "Press any key to continue...";
             _getwch();
             int attack = 0;
             alien.resetAttack(attack);
