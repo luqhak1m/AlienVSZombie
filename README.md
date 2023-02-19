@@ -12,7 +12,7 @@ By only using limited commands, can the alien prove its worth and defeat all the
 
 [Full Gameplay](https://youtu.be/86s3pnQ3_OQ)
 
-## Compilation Instructions
+## Compilation Instructions (IMPORTANT)
 
 MacOS
 
