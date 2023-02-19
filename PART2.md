@@ -29,22 +29,12 @@ List all the features completed.
 17. Zombie attacks alien based on its attack score when the alien is in it's range.
 18. Save and Load game.
 
-### To Do
-
-List all the features not yet done. Remove this section if there is no incomplete requirements.
-
-1. Cool Feature #1
-
 ## Additional Features
 
 1. Show zombie attributes to user
 2. Pod grants extra turn to user
 
 ## Contributions
-
-List down the contribution of each group members.
-
-For example:
 
 ### Asyrani Syazwan
 
@@ -70,7 +60,13 @@ For example:
 
 1. Generating multiple zombies with randomized attributes.
 2. Moving the zombies randomly for each turn.
+3. Attacking Alien if it's in range.
+4. Attacking nearest zombie when Alien encounters pod object.
+5. Displaying stats for zombie during Alien and each Zombie's turn.
+6. Remove dead zombie from gameboard.
+7. Skip dead zombie's turn.
 
 ## Problems Encountered & Solutions
 
-Describe the problems encountered and provide the solutions / plan for the solutions.
+Problem: Had trouble finding nearest Zombies (diagonally).
+Solution: Pythagoras theorem
