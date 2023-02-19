@@ -1,8 +1,8 @@
 # Alien vs. Zombie
 
-Welcome to Alien vs Zombie (Part 1). 
+Welcome to Alien vs Zombie. 
 
-This half-completed game was inspired by the mobile game called Alien Path, a 
+This game is inspired by the mobile game called Alien Path, a 
 game where an alien work its way to defeat all the zombies by overcoming 
 different challenges on the battlefield.
 
