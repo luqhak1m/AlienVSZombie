@@ -1581,7 +1581,7 @@ void test()
     }
     else if (choice =='n'){
         //Zombie zombies[numOfZombies];
-        numOfZombies = 11;
+        numOfZombies = numOfZombies;
         cout << "Do you want to edit the Game Board (y/n)? = ";
         cin >> ed;
         //gameBoard.checkRowCol(row, "Rows");
