@@ -433,7 +433,7 @@ void Alien::up(gameBoard &gameBoard, Alien &alien, int &z_no){
         _getwch();
         cout << endl;
         gameBoard.display();
-        z_='S';
+        z_='K';
     } 
     else if (zombie.checkZombie(x_,y_+1,gameBoard)!='0'){
         gameBoard.setObject(x_,y_,'A');
@@ -451,7 +451,7 @@ void Alien::up(gameBoard &gameBoard, Alien &alien, int &z_no){
         alien.rockSpawn(gameBoard,x_,y_+1);
         cout << endl;
         gameBoard.display();
-        z_='S';
+        z_='K';
     }
 }
 
@@ -589,7 +589,7 @@ void Alien::down(gameBoard &gameBoard, Alien &alien, int &z_no){
         _getwch();
         cout << endl;
         gameBoard.display();
-        z_='S';
+        z_='K';
     }
     else if (zombie.checkZombie(x_,y_-1,gameBoard)!='0'){
         gameBoard.setObject(x_,y_,'A');
@@ -607,7 +607,7 @@ void Alien::down(gameBoard &gameBoard, Alien &alien, int &z_no){
         alien.rockSpawn(gameBoard,x_,y_-1);
         cout << endl;
         gameBoard.display();
-        z_='S';
+        z_='K';
     }
 } 
 
@@ -749,7 +749,7 @@ void Alien::left(gameBoard &gameBoard, Alien &alien, int &z_no){
         _getwch();
         cout << endl;
         gameBoard.display();
-        z_='S';
+        z_='K';
     }
     else if (zombie.checkZombie(x_-1,y_,gameBoard)!='0'){
         gameBoard.setObject(x_,y_,'A');
@@ -767,7 +767,7 @@ void Alien::left(gameBoard &gameBoard, Alien &alien, int &z_no){
             alien.rockSpawn(gameBoard,x_-1,y_);
             cout << endl;
             gameBoard.display();
-            z_='S';
+            z_='K';
     }
 }
 
@@ -910,7 +910,7 @@ void Alien::right(gameBoard &gameBoard, Alien &alien, int &z_no){
         _getwch();
         cout << endl;
         gameBoard.display();
-        z_='S';
+        z_='K';
     }
     else if (zombie.checkZombie(x_+1,y_,gameBoard)!='0'){
         gameBoard.setObject(x_,y_,'A');
@@ -928,7 +928,7 @@ void Alien::right(gameBoard &gameBoard, Alien &alien, int &z_no){
             alien.rockSpawn(gameBoard,x_+1,y_);
             cout << endl;
             gameBoard.display();
-            z_='S';
+            z_='K';
     }
 }
 
@@ -1883,6 +1883,52 @@ void test()
             cout << "\nThis round has ended" << endl;
             alien.setMove();
         }
+      
+    else if(alien.getMove()=='K'){
+            cout << "Alien's turn has ended." << endl;
+            cout << endl;
+            cout << "Press any key to continue...";
+            _getwch();
+            int attack = 0;
+            alien.resetAttack(attack);
+            gameBoard.display();
+            alien.resetTrail(gameBoard);
+            gameBoard.display();
+            for(int i=0; i<numOfZombies; i++){
+                if(zombies[i].getZHealth()<=0){
+                    zombies[i].displayZombieTemplate(i, zombies[i], gameBoard, alien);
+                    cout<< "Zombie " << zombies[i].getZHeading() << " is DEAD." << endl;
+                    cout << "Press any key to continue...";
+                    _getwch();
+                    alien.setMove();
+                }
+                else{
+                    zombies[i].displayZombieTemplate(i, zombies[i], gameBoard, alien);
+                    cout << "Zombie ";
+                    zombies[i].moveZombie(i, zombies[i], gameBoard);
+                    cout << "Press any key to continue...";
+                    _getwch();
+                    zombies[i].displayZombieTemplate(i, zombies[i], gameBoard, alien);
+                    if(zombies[i].returnRange(zombies[i], gameBoard, alien)){
+                        zombies[i].checkRange(zombies[i], gameBoard, alien);
+                        if(alien.reduceHealth(zombies[i].getZAttack())<=0){
+                            cout << "Alien is DEAD. you lose. good day sir" << endl;
+                        }
+                        else{
+                            cout << "Alien's life is down to " << alien.getLife() << "." << endl;
+                        }
+                    }
+                    else{
+                        cout<<"Alien is NOT in range. Alien is safe."<<endl;
+                    }
+                    cout << "Press any key to continue...";
+                    _getwch();
+                }
+            }
+            gameBoard.display();
+            cout << "\nThis round has ended" << endl;
+            alien.setMove();
+            }
     }  
 }
 
