@@ -8,7 +8,7 @@ different challenges on the battlefield.
 
 By only using limited commands, can the alien prove its worth and defeat all the zombies?
 
-[Gameplay Screenshot](ss.JPG)
+[Gameplay Screenshot](ss2.JPG)
 
 [Full Gameplay](https://youtu.be/86s3pnQ3_OQ)
 
