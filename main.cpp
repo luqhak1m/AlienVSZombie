@@ -1984,7 +1984,7 @@ void test()
 }
 
 int main(){
-    srand(5);
-    //srand(time(NULL));
+    //srand(5);
+    srand(time(NULL));
     test();
 }
