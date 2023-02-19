@@ -27,7 +27,7 @@ private:
     vector< vector<char> > map_;
     int dimX_, dimY_;
 public:
-    gameBoard(int dimX = 5, int dimY = 7);
+    gameBoard(int dimX = 9, int dimY = 13);
     void init(int dimX, int dimY);
     void init2(int dimX, int dimY);
     void display() const;
@@ -1606,11 +1606,11 @@ void test()
     Alien alien;
     Arrow arrow;
     
-    int col = 7, row =5;
+    int col = 13, row =9;
     string command;
     int x,y;
     string direction;
-    int numOfZombies = 2;
+    int numOfZombies = 9;
     int z = 0;
     int z_no;
     int oriHealth, health;
@@ -1687,8 +1687,8 @@ void test()
             cout << endl;
             cout << "Let's Play!" << endl;
             cout << endl;
-            row = 5;
-            col = 7;
+            row = 9;
+            col = 13;
         }
         gameBoard.init(col,row);
         alien.land(gameBoard);
