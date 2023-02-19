@@ -433,7 +433,7 @@ void Alien::up(gameBoard &gameBoard, Alien &alien, int &z_no, int &whichArrow){
         system("read -n 1 -s -p \"Press any key to continue...\"");
         cout << endl;
         gameBoard.display();
-        z_='S';
+        z_='K';
     } 
     else if (zombie.checkZombie(x_,y_+1,gameBoard)!='0'){
         gameBoard.setObject(x_,y_,'A');
@@ -450,7 +450,7 @@ void Alien::up(gameBoard &gameBoard, Alien &alien, int &z_no, int &whichArrow){
         alien.rockSpawn(gameBoard,x_,y_+1);
         cout << endl;
         gameBoard.display();
-        z_='S';
+        z_='K';
     }
 }
 
@@ -582,7 +582,7 @@ void Alien::down(gameBoard &gameBoard, Alien &alien, int &z_no, int &whichArrow)
         system("read -n 1 -s -p \"Press any key to continue...\"");
         cout << endl;
         gameBoard.display();
-        z_='S';
+        z_='K';
     }
     else if (zombie.checkZombie(x_,y_-1,gameBoard)!='0'){
         gameBoard.setObject(x_,y_,'A');
@@ -599,7 +599,7 @@ void Alien::down(gameBoard &gameBoard, Alien &alien, int &z_no, int &whichArrow)
         alien.rockSpawn(gameBoard,x_,y_-1);
         cout << endl;
         gameBoard.display();
-        z_='S';
+        z_='K';
     }
 } 
 
@@ -735,7 +735,7 @@ void Alien::left(gameBoard &gameBoard, Alien &alien, int &z_no, int &whichArrow)
         system("read -n 1 -s -p \"Press any key to continue...\"");
         cout << endl;
         gameBoard.display();
-        z_='S';
+        z_='K';
     }
     else if (zombie.checkZombie(x_-1,y_,gameBoard)!='0'){
         gameBoard.setObject(x_,y_,'A');
@@ -752,7 +752,7 @@ void Alien::left(gameBoard &gameBoard, Alien &alien, int &z_no, int &whichArrow)
             alien.rockSpawn(gameBoard,x_-1,y_);
             cout << endl;
             gameBoard.display();
-            z_='S';
+            z_='K';
     }
 }
 
@@ -889,7 +889,7 @@ void Alien::right(gameBoard &gameBoard, Alien &alien, int &z_no, int &whichArrow
         system("read -n 1 -s -p \"Press any key to continue...\"");
         cout << endl;
         gameBoard.display();
-        z_='S';
+        z_='K';
     }
     else if (zombie.checkZombie(x_+1,y_,gameBoard)!='0'){
         gameBoard.setObject(x_,y_,'A');
@@ -906,7 +906,7 @@ void Alien::right(gameBoard &gameBoard, Alien &alien, int &z_no, int &whichArrow
             alien.rockSpawn(gameBoard,x_+1,y_);
             cout << endl;
             gameBoard.display();
-            z_='S';
+            z_='K';
     }
 }
 
@@ -1984,7 +1984,7 @@ void test()
 }
 
 int main(){
-    //srand(5);
+    //srand(5); //for testing purposes
     srand(time(NULL));
     test();
 }
