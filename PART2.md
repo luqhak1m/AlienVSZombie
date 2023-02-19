@@ -2,7 +2,7 @@
 
 ## Video Demo
 
-Please provide the YouTube link to your [Video Demo](https://youtube.com).
+[Part 2 Gameplay](https://youtube.com).
 
 ## Minimum Requirements
 
